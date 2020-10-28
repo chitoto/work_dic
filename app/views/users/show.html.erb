@@ -2,6 +2,13 @@
   <span class="notice"><%= notice %></span>
   <h1><%= @user.name %>のページ</h1>
   <p>メールアドレス: <%= @user.email %></p>
-    <%= link_to "ログイン", new_session_path %>
+  <%= @favorited_total_counts %>
+  <% if logged_in? %>
+    <%= link_to "ブログ一覧へ！", blogs_path, class: 'btn btn-info' %>
     <%= link_to "編集", edit_user_path %>
+    <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_path %>
+    <%= link_to "ログイン", new_session_path, class: 'btn btn-info' %>
+  <% end %>
 </div>
