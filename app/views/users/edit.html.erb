@@ -1,0 +1,25 @@
+<div class="fuield">
+  <h2>編集する</h2>
+  <div class="user_form">
+    <span><%= notice %></span>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "件のエラーがあります") %></h2>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form_with(model: @user, local: true) do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name , placeholder:"名前を入力" %><br>
+    <%= form.label :email %>
+    <%= form.text_field :email, placeholder:"メールアドレスを入力" %>
+    <%= form.label :password %><br>
+    <%= form.text_field :password, placeholder:"パスワードを入力" %><br>
+    <%= form.submit "登録する" %>
+    <% end %>
+  </div>
+</div>
